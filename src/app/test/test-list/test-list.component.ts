@@ -17,4 +17,7 @@ export class TestListComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteTest(key: string) {    
+    this.tests.remove(key); 
+  }
 }

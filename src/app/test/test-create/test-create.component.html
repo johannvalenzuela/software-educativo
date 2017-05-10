@@ -1,3 +1,11 @@
-<p>
-  test-create works!
-</p>
+<input type="text" #newitem />
+<h2>Hero Detail</h2>
+<h3><i>FormControl in a FormGroup</i></h3>
+<form formGroup="testForm" novalidate>
+  <div class="form-group">
+    <label class="center-block">Name:
+      <input class="form-control" formControlName="name">
+    </label>
+  </div>
+</form>
+<button (click)="addTest(newitem.value)">Add</button>

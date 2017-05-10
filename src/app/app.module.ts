@@ -8,30 +8,17 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 import { Routes, RouterModule } from '@angular/router';
 import { TeacherModule } from './teacher/teacher.module';
+import { TestModule } from './test/test.module';
 
 import { AppComponent } from './app.component';
-import { TestListComponent } from './test/test-list/test-list.component';
-import { TestDetailComponent } from './test/test-detail/test-detail.component';
 
 const appRoutes: Routes = [
-      {
-        path: 'tests',
-        component: TestListComponent,
-        children: [
-          {
-            path: ':id',
-            component: TestDetailComponent
-          }
-        ]
-      }
     
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TestListComponent,
-    TestDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +28,8 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot(appRoutes),
     AngularFireDatabaseModule,
-    AngularFireAuthModule 
+    AngularFireAuthModule,
+    TestModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let test of tests | async">
-      <th scope="row">1</th>
+      <th scope="row"><button (click)="deleteTest(test.$key)">Delete</button></th>
       <td>{{test | json}}</td>
       <td>Otto</td>
       <td>@mdo</td>
