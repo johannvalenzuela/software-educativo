@@ -14,7 +14,7 @@
 
 # Descripción
 
-Sistema evaluativo en tiempo real que permite a profesionales docentes obtener métricas para tomar decisiones acerca de sus clases. Además es una herramienta que permite ser efectivos en el tiempo que 
+Sistema evaluativo en tiempo real que permite a profesionales docentes obtener métricas para tomar decisiones acerca de sus clases. Además es una herramienta que permite ser efectivos en el tiempo de realizar actividades y evaluaciones, acelerando estos procesos.
 
 ## ¿Por qué Firebase?
 
@@ -111,16 +111,10 @@ Este proyecto usa Firebase Realtime Database, por lo tanto la documentación de 
 {
     "answwers": {
         "answer1": {
-            "question": "Johann Valenzuela",
-            "mail": "johann.aevt@gmail.com",
-            "country": "CL",
-            "city": "Valparaíso",
-            "courses": {
-                {
-                    "course_id": "12345",
-                    "suscription_date": "09/05/2017"
-                },
-                ...
+            "student": "asdf1234",
+            "test": "fdas4321",
+            "response":{
+              
             }
         },
         ...
