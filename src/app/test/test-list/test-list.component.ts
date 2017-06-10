@@ -11,7 +11,19 @@ export class TestListComponent implements OnInit {
   tests: FirebaseListObservable<any[]>;
   constructor(db: AngularFireDatabase) {
     this.tests = db.list('/tests');
-    console.log(this.tests)
+    console.log(this.tests);
+    let presenceRef = db.database.ref("disconnectmessage");
+    presenceRef.onDisconnect().set("I disconnected!");
+
+    let connectedRef = db.database.ref(".info/connected");
+//    connectedRef.on("value", function(snap) {
+//      if (snap.val() === true) {
+//        alert("connected");
+//      } else {
+//        alert("not connected");
+//      }
+//    });
+
   }
 
   ngOnInit() {

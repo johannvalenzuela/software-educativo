@@ -1,18 +1,22 @@
-<table class="table table-striped table-inverse">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let test of tests | async">
-      <th scope="row"><button (click)="deleteTest(test.$key)">Delete</button></th>
-      <td>{{test | json}}</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6" *ngFor="let test of tests | async; let i=index">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">{{test.title}}</h4>
+          <p class="card-text">Fecha creacion: {{test.creation_date}}</p>
+          <p class="card-text">Descripción: {{test.description}}</p>
+        </div>
+        <div class="form-group" *ngFor="let question of test.questions ; let j=index ">
+          {{question.title}}
+          <div class="form-group" *ngFor="let answer of question.answers ; let k=index">
+            {{answer.text}}
+          </div>
+        </div>
+        <div class="card-block">
+          <a class="card-link" (click)="deleteTest(test.$key)">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

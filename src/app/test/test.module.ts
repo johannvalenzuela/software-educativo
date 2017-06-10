@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TestListComponent } from './test-list/test-list.component';
 import { TestDetailComponent } from './test-detail/test-detail.component';
@@ -14,7 +14,7 @@ const appRoutes: Routes=[
     component: TestListComponent
   },
   {
-    path:'tests/create',
+    path:'tests/new',
     component: TestCreateComponent
   }, 
   {
@@ -27,7 +27,8 @@ const appRoutes: Routes=[
   imports: [
     CommonModule,
     RouterModule.forChild(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [TestListComponent,TestDetailComponent, TestCreateComponent]
 })

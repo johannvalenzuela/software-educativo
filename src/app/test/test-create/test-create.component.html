@@ -1,11 +1,85 @@
-<input type="text" #newitem />
-<h2>Hero Detail</h2>
-<h3><i>FormControl in a FormGroup</i></h3>
-<form formGroup="testForm" novalidate>
-  <div class="form-group">
-    <label class="center-block">Name:
-      <input class="form-control" formControlName="name">
-    </label>
-  </div>
-</form>
-<button (click)="addTest(newitem.value)">Add</button>
+      <section class="forms">
+        <div class="container-fluid">
+          <header> 
+            <h1 class="h3 display">Forms</h1>
+          </header>
+          <form novalidate [formGroup]="test">
+          <div class="row">
+            
+            
+            <div class="col-lg-12">
+                
+                <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h2 class="h5 display display">Test</h2>
+                </div>
+                <div class="card-block">
+                  <p>Está creando una prueba</p>
+                  
+                    <div class="form-group">
+                      <label>Título</label>
+                      <input type="text" placeholder="Titulo" formControlName="title" class="form-control">
+                    </div>
+                    <div class="form-group">       
+                        <label>Fecha</label>
+                        <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" formControlName="create_date">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <input type="text" placeholder="descripción" formControlName="description" class="form-control">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div formArrayName="questions" class="col-lg-6" *ngFor="let question of test.controls['questions'].controls; let i=index">
+                <div class="card">
+                    <div class="card-block">
+                        <div formGroupName="{{i}}">
+                            <span>Preguntas </span>
+                            <div class="form-group">
+                                <label>Pregunta</label>
+                                <input type="text" placeholder="Titulo de la pregunta" formControlName="title" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Opción correcta</label>
+                                <input type="number" placeholder="numero de la pregunta correcta" formControlName="correct" class="form-control">
+                            </div>
+                            <span>Opciones</span>
+                            <div formArrayName="answers">
+                                    <div class="list-group-item" *ngFor="let answer of test.controls['questions'].controls[i].controls['answers'].controls ; let j=index">
+                                        <div formGroupName="{{j}}" class="form-group">
+                                            <label>Descripción </label>
+                                            <input type="text" placeholder="RESPUESTAgunta" formControlName="text" class="form-control">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <input (click)="addAnswer(i)" class="btn btn-secondary" value="+Opcion"/>
+                    </div>
+                </div>
+
+
+                   
+            </div>
+           <div class="col-lg-6">
+               <div class="card">
+                   <div class="card-block">
+                    <div class="form-group"> 
+                        <input (click)="addQuestion()" class="btn btn-secondary" value="+Pregunta"/>
+                    </div>
+
+                    <div class="form-group">
+                      <input (click)="addTest(test)" class="btn btn-primary" value="Enviar" />
+                    </div>
+                   </div>
+               </div>
+           </div>
+
+            
+          </div>
+          </form>
+        </div>
+      </section>
